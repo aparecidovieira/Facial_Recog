@@ -1,10 +1,11 @@
+from __future__ import print_function
 import cv2
 import sys
 
 import numpy as np
 
-classifier = sys.argv[1]
-faceDetect = cv2.CascadeClassifier(classifier)
+faceDetect = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
+##faceDetect = cv2.CascadeClassifier(classifier)
 cam = cv2.VideoCapture(0)
 
 
@@ -16,10 +17,10 @@ while (True):
 
       faces = faceDetect.detectMultiScale( 
         gray,
-        scaleFactor = 1.1,
-        minNeighbors = 5,
-        minSize = (25, 25),
-        flags = cv2.cv.CV_HAAR_SCALE_IMAGE
+        scaleFactor = 1.3,
+        minNeighbors = 4,
+        minSize = (30, 30),
+        ##flags = cv2.CASCADE_SCALE_IMAGE
        )
 
       for(x,y,w,h) in faces:
